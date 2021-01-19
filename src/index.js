@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.css'
 import App from  './App';
 import appStore from "./store";
 
-const storeContext = React.createContext()
+export const StoreContext = React.createContext('')
 
 ReactDOM.render(
   <React.StrictMode>
-      <storeContext.Provider value={appStore}>
+      <StoreContext.Provider value={appStore}>
           <App />
-      </storeContext.Provider>
+      </StoreContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

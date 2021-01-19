@@ -1,15 +1,19 @@
 import './App.css';
 import {useObserver} from 'mobx-react-lite'
-import appStore from "./store";
+import {LeftOutlined} from '@ant-design/icons'
 import {useContext} from "react";
-function App() {
-  const store = useContext(appStore)
-  return useObserver(()=>(
+import {StoreContext} from "./index";
+import ImageController from "./components/ImageController";
 
-      <div className="App">
-        <img src={store.imageUrl} alt={"face-img"}/>
-      </div>
-  ))
+function App() {
+
+return(
+    <div className="App">
+        <ImageController/>
+    </div>
+    )
+
+
 }
 
 export default App;
