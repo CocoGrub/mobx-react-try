@@ -8,12 +8,12 @@ import appStore from "../store";
 
 
 const ImageController =observer(()=>{
+
     const store = useContext(StoreContext)
     return (
         <div className={'image-controller'}>
-            <Space size={12} style={{margin: '0, auto',flexDirection:'column'}} >
+            <Space size={12} style={{margin: '0, auto',flexDirection:'column', position:'relative'}} >
                 <Image
-
                     src={store.imageUrl}
                     alt={"face-img"}
                     preview={false}
@@ -24,7 +24,10 @@ const ImageController =observer(()=>{
                 <Button
                     icon={<LeftOutlined />}
                     type="primary"
+                    disabled={store.prevButtonDisable}
+
                     onClick={() => {
+                        store.nextImage('prev')
                     }}
                 >
                  PREV

@@ -1,15 +1,17 @@
 import './App.css';
-import {useObserver} from 'mobx-react-lite'
-import {LeftOutlined} from '@ant-design/icons'
-import {useContext} from "react";
-import {StoreContext} from "./index";
 import ImageController from "./components/ImageController";
+import Comments from "./components/Comments";
+import {Card} from 'antd'
 
 function App() {
 
 return(
-    <div className="App">
-        <ImageController/>
+    <div className="App" style={{display:"flex",flexDirection:"column",alignItems:'center'}}>
+       <Card>
+           <ImageController/>
+           <Comments/>
+       </Card>
+
     </div>
     )
 

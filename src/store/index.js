@@ -3,23 +3,24 @@ import {makeObservable, observable, action, runInAction, makeAutoObservable} fro
 class main{
     id=1
     imageUrl = `https://rickandmortyapi.com/api/character/avatar/1.jpeg`
+    prevButtonDisable=true
+    comments=['wow','samurai']
     constructor() {
         makeAutoObservable(this);
 
     }
-
-    async nextImage (){
-
-        this.fetchId = ++this.id
+    async nextImage (x){
+        if(x==='prev'){
+            this.fetchId = --this.id
+        }else {
+            this.fetchId = ++this.id
+        }
         try {
             const  response = await fetch(`https://rickandmortyapi.com/api/character/avatar/${this.fetchId}.jpeg`)
-            // const res = response.json()
-            console.log(response)
             runInAction(() => {
                 this.imageUrl = response.url
-
+                this.prevButtonDisable = this.id <= 1;
             })
-
         }catch (e){
             console.log(e)
         }
