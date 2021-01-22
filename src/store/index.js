@@ -1,12 +1,19 @@
-import {makeObservable, observable, action, runInAction, makeAutoObservable} from "mobx"
+import {makeObservable,get, observable, action, runInAction, makeAutoObservable} from "mobx"
 
 class main{
     id=1
     imageUrl = `https://rickandmortyapi.com/api/character/avatar/1.jpeg`
     prevButtonDisable=true
     comments=['wow','samurai']
+    get commentsCount(){
+        return this.comments.length
+    }
     constructor() {
         makeAutoObservable(this);
+
+    }
+    pushComment(x){
+        this.comments.push(x)
 
     }
     async nextImage (x){
@@ -29,5 +36,5 @@ class main{
 }
 
 const appStore=new main()
-
+console.log(appStore)
 export default appStore
