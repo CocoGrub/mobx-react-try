@@ -1,16 +1,25 @@
-import {makeObservable,get, observable, action, runInAction, makeAutoObservable} from "mobx"
+import { runInAction, makeAutoObservable} from "mobx"
 
 class main{
     id=1
+    likes=3
     imageUrl = `https://rickandmortyapi.com/api/character/avatar/1.jpeg`
     prevButtonDisable=true
     comments=['wow','samurai']
-    get commentsCount(){
-        return this.comments.length
-    }
+
     constructor() {
         makeAutoObservable(this);
 
+    }
+    get commentsCount(){
+        return this.comments.length
+    }
+    likeThis(x){
+        if(x){
+            this.likes++
+        }else {
+            if(this.likes>0)this.likes--
+        }
     }
     pushComment(x){
         this.comments.push(x)
@@ -36,5 +45,4 @@ class main{
 }
 
 const appStore=new main()
-console.log(appStore)
 export default appStore

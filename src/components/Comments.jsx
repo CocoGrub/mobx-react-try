@@ -1,14 +1,13 @@
 import React,{useContext} from "react";
-import {observer, useLocalObservable, useLocalStore} from "mobx-react-lite";
+import {observer, useLocalObservable} from "mobx-react-lite";
 import {StoreContext} from "../index";
-import {List, Input, Space, Form, Button} from "antd";
+import {List, Input, Button} from "antd";
 
 const Comments= observer(()=>{
     const state=useContext(StoreContext)
     const input = useLocalObservable(() => ({
         value: '',
         setValue(e) {
-            console.log(e)
             this.value=e.target.value
 
         }
@@ -22,10 +21,13 @@ const  sendComment=()=>{
         <div style={{margin:'0,auto'}}>
             <div className={'comments-list'} style={{ margin:'1rem 0',textAlign:'left'}}>
                     <label htmlFor={'comment'}>Post a comment</label>
-                    <Input name={'comment'} value={input.value} onChange={(e)=>{input.setValue(e)}}/>
+                <div style={{display:'flex'}}>
+                    <Input className={'comment'} name={'comment'} value={input.value} onChange={(e)=>{input.setValue(e)}}/>
+                    <Button onClick={()=>sendComment(input.value)}>POST</Button>
+                </div>
 
             </div>
-            <Button onClick={()=>sendComment(input.value)}>POST</Button>
+
             <List
                 size="small"
                 bordered
