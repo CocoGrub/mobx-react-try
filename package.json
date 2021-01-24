@@ -2,7 +2,7 @@
   "name": "mobx-react-learn",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cocogrub.github.io/mobx-react-try/",
+  "homepage": "https://cocogrub.github.io/mobx-react-try",
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@babel/core": "7.12.3",
